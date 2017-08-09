@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <base href="/">
-</head>
-<body ng-app="myApp">
-  <div ng-view></div>
+<ul>
+  <li ng-repeat="topic in TopicService.topics"  >
+    <h4>{{ topic.title }}</h4>
+  </li>
+</ul>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
-  <script src="/scripts/app.js"></script>
-  <script src="/scripts/values.js"></script>
-  <script src="/scripts/constants.js"></script>
-  <script src="/scripts/services.js"></script>
-</body>
-</html>
+<input type="text" placeholder="title" ng-model="newTopic.title"><br>
+<button ng-click="addTopic()">Add</button>

@@ -1,14 +1,23 @@
-angular.module('myApp', ['ngRoute']);
+angular.module('app', ['ngRoute']);
 
-var myApp = angular.module('myApp');
+var app = angular.module('app');
 
-myApp
+app
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
   .when('/', {
     templateUrl: 'home.html',
     controller: 'HomeController'
-  });
+  })
+  .when('/register', {
+    templateUrl: 'register.html',
+    controller: 'RegisterController'
+  })
+  .when('/users', {
+    templateUrl: 'users.html',
+    controller: 'UserController'
+  })
+  .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode(true);
 }])
