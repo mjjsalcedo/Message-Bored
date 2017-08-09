@@ -4,15 +4,14 @@ module.exports = function(sequelize, DataTypes){
     unique:true, allowNull: false },
     password: { type: DataTypes.STRING,
     allowNull: false }
-  },
-  {
-    classMethods: {
-      associate: function(models) {
-        Users.hasMany(models.topics);
-        Users.hasMany(models.messages);
-      }
-    }
   });
+
+  Users.associate = function (models){
+    Users.hasMany(models.topics);
+    Users.hasMany(models.messages);
+  };
 
   return Users;
 };
+
+

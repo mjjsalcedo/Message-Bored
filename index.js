@@ -3,6 +3,7 @@ const express = require('express');
 const PORT = process.env.PORT || 9000;
 const bodyParser = require('body-parser');
 const app = express();
+const apiRoutes = require('./api');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -27,8 +28,6 @@ app.use(passport.session());
 
 let db = require('./models');
 let Users = db.users;
-let Topics = db.topics;
-let Messages = db.messages;
 
 passport.serializeUser((user, cb)=> {
   cb(null, user.id);
@@ -65,6 +64,10 @@ passport.use(new LocalStrategy((username,password, done)=>{
 }
 ));
 
+app.use('/api', apiRoutes);
+app.use('*', (req, res) => {
+  res.sendFile('./public/home.html', { root: __dirname });
+})
 
 app.listen(PORT, () => {
   db.sequelize.sync({force:true});
