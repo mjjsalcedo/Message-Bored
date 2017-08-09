@@ -4,11 +4,11 @@ module.exports = function(sequelize, DataTypes){
     unique:true, allowNull: false }
   });
 
-  Topics.associate = function (models){
-    Topics.belongsTo(models.users, {
-      foriegnKey: {
+    Topics.associate = function(models) {
+    Topics.belongsTo(models.users,  {
+      foreignKey: {
         name: 'created_by',
-        allowNull:false
+        allowNull: false
       }
     });
   };
