@@ -66,7 +66,7 @@ passport.use(new LocalStrategy((username,password, done)=>{
 
 app.use('/api', apiRoutes);
 app.use('*', (req, res) => {
-  res.sendFile('./public/home.html', { root: __dirname });
+  res.sendFile('./public/index.html', { root: __dirname });
 });
 
 app.listen(PORT, () => {

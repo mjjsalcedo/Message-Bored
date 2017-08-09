@@ -1,10 +1,9 @@
-var app = angular.module('app');
-
-app.controller(
-  'UserController', ['$scope', 'Users', function($scope, Users) {
-  $scope.users = [];
-  Users.getUsers()
-  .then((users) => {
-    $scope.users = users;
-  });
-}]);
+angular.module('app')
+.controller(
+  'UserController', ['$scope', 'UserService', function($scope, UserService) {
+    $scope.users = [];
+    UserService.getUsers()
+    .then(function(users) {
+      $scope.users = users;
+    });
+  }]);

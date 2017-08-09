@@ -5,16 +5,16 @@ var app = angular.module('app');
 app
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
-  .when('/', {
+  /*.when('/', {
     templateUrl: 'home.html',
     controller: 'HomeController'
-  })
-  .when('/register', {
-    templateUrl: 'register.html',
-    controller: 'RegisterController'
-  })
+  })*/
+  // .when('/register', {
+  //   templateUrl: 'register.html',
+  //   controller: 'RegisterController'
+  // })
   .when('/users', {
-    templateUrl: 'users.html',
+    templateUrl: 'user.html',
     controller: 'UserController'
   })
   .otherwise({ redirectTo: '/' });
