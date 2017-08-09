@@ -67,9 +67,9 @@ passport.use(new LocalStrategy((username,password, done)=>{
 app.use('/api', apiRoutes);
 app.use('*', (req, res) => {
   res.sendFile('./public/home.html', { root: __dirname });
-})
+});
 
 app.listen(PORT, () => {
-  db.sequelize.sync({force:true});
+  db.sequelize.sync(/*{force:true}*/);
   console.log('server started on port: ' + PORT);
 });

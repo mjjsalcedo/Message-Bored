@@ -12,7 +12,7 @@ router.get('/', (req,res)=>{
   .then( users => {
     let allUsers = users.map(user => {
       return {
-        username: user.username
+        username: user.name
       };
     });
     res.json(allUsers);
@@ -26,7 +26,7 @@ router.get('/:id', (req,res)=>{
   )
   .then( users => {
     let selectedUser = {
-          username:users.username,
+          username:users.name,
           messages:users.messages
         };
     res.json(selectedUser);
@@ -35,14 +35,13 @@ router.get('/:id', (req,res)=>{
 
 router.post('/', (req,res)=>{
   Users.create({
-    username: req.body.username,
-    password:req.body.password
+    name: req.body.name,
   }).then((newUser)=>{
     Users.findOne({
-    where: {username: newUser.username }})
+    where: {name: newUser.name }})
     .then((displayUser)=>{
       let newlyCreatedUser = {
-        username: displayUser.username
+        name: displayUser.name
       };
       res.json(newlyCreatedUser);
     });
