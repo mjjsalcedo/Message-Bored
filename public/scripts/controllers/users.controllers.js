@@ -5,6 +5,5 @@ angular.module('app')
     UserService.getUsers()
     .then(function(users) {
       $scope.users = users;
-
     });
   }]);

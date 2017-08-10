@@ -1,8 +1,11 @@
-<!-- <ul>
-  <li ng-repeat="topic in TopicService.topics"  >
-    <h4>{{ topic.title }}</h4>
+<a ng-href="/">Home</a>
+<a ng-href="/login">Login</a>
+<a ng-href="/register">Register</a>
+<a ng-href="/users">Users</a>
+
+<ul>
+  <li ng-repeat="topic in topics">
+    <h4>{{ topic.name }}</h4>
   </li>
 </ul>
 
-<input type="text" placeholder="title" ng-model="newTopic.title"><br>
-<button ng-click="addTopic()">Add</button> -->

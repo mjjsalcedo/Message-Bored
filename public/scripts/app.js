@@ -9,10 +9,10 @@ app
     templateUrl: 'home.html',
     controller: 'HomeController'
   })
-  // .when('/register', {
-  //   templateUrl: 'register.html',
-  //   controller: 'RegisterController'
-  // })
+  .when('/register', {
+    templateUrl: 'register.html',
+    controller: 'RegisterController'
+  })
   .when('/users', {
     templateUrl: 'users.html',
     controller: 'UsersController'

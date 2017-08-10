@@ -1,13 +1,9 @@
   <h1>{{ user }}</h1>
-<ul>
-  <li ng-repeat="post in posts">
-  <h2> {{ post.name }}</h2>
-  </li>
-</ul>
 
 <ul>
-  <li ng-repeat="message in messages">
-  <p> {{ message.body }}</p>
+  <li ng-repeat="message in messages | orderBy: '-createdAt'">
   <p> {{ message.topic.name }}</p>
+  <p> {{ message.body }}</p>
+  <p> {{ message.createdAt }}</p>
   </li>
 </ul>

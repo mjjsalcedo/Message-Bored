@@ -1,6 +1,5 @@
 <ul>
   <li ng-repeat="user in users">
-    <h4>{{ user.username }}</h4>
-    <h4>{{ user.messages }}</h4>
+    <a ng-href="/users/{{user.id}}">{{ user.username }}</a>
   </li>
 </ul>

@@ -12,6 +12,9 @@ angular.module('app')
       .then(function(user) {
          return user.data;
       });
+    },
+    addUser: function(data) {
+      return $http.post('http://localhost:9000/api/users',data);
     }
   };
 }]);

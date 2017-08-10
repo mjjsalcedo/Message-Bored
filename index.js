@@ -15,6 +15,7 @@ const bcrypt = require('bcrypt');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(session({
   store: new RedisStore(),

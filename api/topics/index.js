@@ -8,22 +8,18 @@ let Topics = db.topics;
 let Messages = db.messages;
 
 router.get('/', (req,res)=>{
-  Topics.findAll({ include: { model: Users } })
+  Topics.findAll({include: [{model: Users, attributes:['name']}],attributes:['name']})
   .then( topics => {
     let allTopics = topics.map(topic => {
       return {
         name: topic.name,
-        created_by: topic.created_by
+        created_by: topic.user.name
       };
     });
-    res.json(allUsers);
+    res.json(allTopics);
   });
 });
 
-/*router.post('/', (req,res)=>{
-  Users.
-});
-*/
 router.put('/:name', (req,res)=>{
   Users.create({
     username: req.body.username,
