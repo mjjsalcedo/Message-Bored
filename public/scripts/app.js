@@ -5,10 +5,10 @@ var app = angular.module('app');
 app
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
-  /*.when('/', {
+  .when('/', {
     templateUrl: 'home.html',
     controller: 'HomeController'
-  })*/
+  })
   // .when('/register', {
   //   templateUrl: 'register.html',
   //   controller: 'RegisterController'

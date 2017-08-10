@@ -1,14 +1,9 @@
-var app = angular.module('app');
-
-app.controller(
+angular.module('app')
+.controller(
   'HomeController', ['$scope', 'TopicService', function($scope, TopicService) {
-    $scope.topicsList = TopicService.getTopics();
-    $scope.newTopic = {title: ''};
-    $scope.addTopic = function(){
-      var newTopic = {
-        title: $scope.newTopic.title
-      };
-      TopicService.addTopic(newTopic);
-      $scope.newTopic.title  = '';
-    };
-}]);
+    $scope.users = [];
+    TopicService.getTopics()
+    .then(function(topics) {
+      $scope.topics = topics;
+    });
+  }]);
