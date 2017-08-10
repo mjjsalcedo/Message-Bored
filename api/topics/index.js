@@ -8,15 +8,31 @@ let Topics = db.topics;
 let Messages = db.messages;
 
 router.get('/', (req,res)=>{
-  Topics.findAll({include: [{model: Users, attributes:['name']}],attributes:['name']})
+  Topics.findAll({include: [{model: Users, attributes:['name']}],attributes:['id','name']})
   .then( topics => {
     let allTopics = topics.map(topic => {
       return {
+        id: topic.id,
         name: topic.name,
         created_by: topic.user.name
       };
     });
     res.json(allTopics);
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  let topicId = parseInt(req.params.id);
+  Topics.findById(topicId,
+    {include: [{model: Messages, include :[{model: Users, attributes:['name']}],attributes:['body', 'createdAt']}]}
+    )
+  .then( topic => {
+    let selectedPost = {
+      name: topic.name,
+      users: topic.users,
+      messages: topic.messages
+    };
+    res.json(selectedPost);
   });
 });
 

@@ -21,6 +21,10 @@ app
     templateUrl: 'user.html',
     controller: 'UserController'
   })
+  .when('/topics/:id', {
+    templateUrl: 'topic.html',
+    controller: 'TopicController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode(true);

@@ -40,15 +40,8 @@ router.post('/', (req,res)=>{
   Users.create({
     name: req.body.name,
   }).then((newUser)=>{
-    Users.findOne({
-      where: {name: newUser.name }})
-    .then((displayUser)=>{
-      let newlyCreatedUser = {
-        name: displayUser.name
-      };
-      res.json(newlyCreatedUser);
+      res.json(newUser);
     });
-  });
 });
 
 module.exports = router;
