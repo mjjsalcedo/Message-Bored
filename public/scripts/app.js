@@ -14,6 +14,10 @@ app
   //   controller: 'RegisterController'
   // })
   .when('/users', {
+    templateUrl: 'users.html',
+    controller: 'UsersController'
+  })
+  .when('/users/:id', {
     templateUrl: 'user.html',
     controller: 'UserController'
   })

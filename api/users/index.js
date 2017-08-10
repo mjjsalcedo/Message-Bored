@@ -22,13 +22,15 @@ router.get('/', (req,res)=>{
 router.get('/:id', (req,res)=>{
   let userId = parseInt(req.params.id);
   Users.findById(userId,
-    {include: [{model: Messages}]}
-  )
+    {include: [{model: Messages, include :[{model: Topics, attributes:['name']}],attributes:['body', 'createdAt']}]}
+    )
   .then( users => {
     let selectedUser = {
-          username:users.name,
-          messages:users.messages
-        };
+      username: users.name,
+      posts: users.topics,
+      messages: users.messages
+    };
+
     res.json(selectedUser);
   });
 });
@@ -38,7 +40,7 @@ router.post('/', (req,res)=>{
     name: req.body.name,
   }).then((newUser)=>{
     Users.findOne({
-    where: {name: newUser.name }})
+      where: {name: newUser.name }})
     .then((displayUser)=>{
       let newlyCreatedUser = {
         name: displayUser.name

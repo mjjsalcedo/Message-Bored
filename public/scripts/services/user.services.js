@@ -6,6 +6,12 @@ angular.module('app')
       .then(function(users) {
          return users.data;
       });
+    },
+    getUser: function(data) {
+      return $http.get('http://localhost:9000/api/users/' + data)
+      .then(function(user) {
+         return user.data;
+      });
     }
   };
 }]);
