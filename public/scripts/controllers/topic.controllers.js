@@ -4,7 +4,6 @@ angular.module('app')
     var topicId = $routeParams.id;
     TopicService.getTopic(topicId)
     .then(function(topic) {
-      console.log(topic);
       $scope.topic = topic;
       $scope.messages = topic.messages;
     });

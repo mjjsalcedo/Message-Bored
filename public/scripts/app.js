@@ -13,6 +13,10 @@ app
     templateUrl: 'register.html',
     controller: 'RegisterController'
   })
+  .when('/login', {
+    templateUrl: 'login.html',
+    controller: 'LoginController'
+  })
   .when('/users', {
     templateUrl: 'users.html',
     controller: 'UsersController'
@@ -24,6 +28,10 @@ app
   .when('/topics/:id', {
     templateUrl: 'topic.html',
     controller: 'TopicController'
+  })
+  .when('/latest', {
+    templateUrl: 'latest.html',
+    controller: 'LatestController'
   })
   .otherwise({ redirectTo: '/' });
 

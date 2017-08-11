@@ -36,6 +36,19 @@ router.get('/:id', (req,res)=>{
   });
 });
 
+router.get('/login/:id', (req,res)=>{
+  console.log(req.params);
+  let verifyUsername = (req.params.id);
+  Users.findOne({where:{name: verifyUsername}}
+    )
+  .then( users => {
+    let foundUser = {
+      username: users.name
+    };
+    res.json(foundUser);
+  });
+});
+
 router.post('/', (req,res)=>{
   Users.create({
     name: req.body.name,

@@ -36,6 +36,14 @@ router.get('/:id', (req,res)=>{
   });
 });
 
+router.post('/', (req,res)=>{
+  Topics.create({
+    name: req.body.name,
+  }).then((newUser)=>{
+      res.json(newUser);
+    });
+});
+
 router.put('/:name', (req,res)=>{
   Users.create({
     username: req.body.username,

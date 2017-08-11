@@ -1,8 +1,11 @@
-<a ng-href="/">Home</a>
-<a ng-href="/login">Login</a>
-<a ng-href="/register">Register</a>
-<a ng-href="/users">Users</a>
+<div class = "navbar">
+<a class = "navbar" ng-href="/">Home</a>
+<a class = "navbar" ng-href="/login">Login</a>
+<a class = "navbar" ng-href="/register">Register</a>
+<a class = "navbar" ng-href="/users">Users</a>
+</div>
 
+<a ng-href="/latest">Latest</a>
 <ul>
   <li ng-repeat="topic in topics">
     <a ng-href="/topics/{{topic.id}}">{{ topic.name }}</a>
