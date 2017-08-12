@@ -14,7 +14,6 @@ angular.module('app')
       });
     },
     addTopic: function(data) {
-      console.log('server', data);
       return $http.post('http://localhost:9000/api/topics', data);
     }
   };

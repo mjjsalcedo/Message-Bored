@@ -8,7 +8,6 @@ angular.module('app')
       });
     },
     addMessage: function(data) {
-      console.log('server', data);
       return $http.post('http://localhost:9000/api/messages', data);
     }
   };

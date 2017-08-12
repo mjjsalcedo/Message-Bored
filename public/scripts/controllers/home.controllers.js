@@ -17,6 +17,8 @@ angular.module('app')
       .then(getTopics);
       $scope.newTopic.name = '';
     };
+    $scope.logoutUser = function(){
+      localStorage.removeItem('username');
+    };
     getTopics();
-    LoginService.logoutUser();
   }]);

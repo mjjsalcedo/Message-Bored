@@ -11,14 +11,15 @@ angular.module('app')
     }
     $scope.newMessage = { body: ''};
     $scope.addMessage = function() {
-      console.log(topicId);
       var newMessage = {
         body: $scope.newMessage.body,
         topic_id: $scope.topic.id,
         created_by: localStorage.username
       };
       MessageService.addMessage(newMessage)
-      .then(TopicService.getTopic(topicId));
+      .then(function(){
+        getTopic();
+      });
       $scope.newMessage.body = '';
     };
     getTopic();
