@@ -28,6 +28,7 @@ router.get('/:id', (req,res)=>{
     )
   .then( topic => {
     let selectedPost = {
+      id: topic.id,
       name: topic.name,
       users: topic.users,
       messages: topic.messages
@@ -37,11 +38,17 @@ router.get('/:id', (req,res)=>{
 });
 
 router.post('/', (req,res)=>{
-  Topics.create({
-    name: req.body.name,
-  }).then((newUser)=>{
+  let submittedInfo = req.body;
+  Users.findOne({where: {name: submittedInfo.created_by}})
+  .then((foundUser)=> {
+    console.log('foundUser', foundUser.id);
+    Topics.create({
+      name: submittedInfo.name,
+      created_by: foundUser.id
+    }).then((newUser)=>{
       res.json(newUser);
     });
+  });
 });
 
 router.put('/:name', (req,res)=>{
@@ -50,7 +57,7 @@ router.put('/:name', (req,res)=>{
     password:req.body.password
   }).then((newUser)=>{
     Users.findOne({
-    where: {username: newUser.username }})
+      where: {username: newUser.username }})
     .then((displayUser)=>{
       let newlyCreatedUser = {
         username: displayUser.username

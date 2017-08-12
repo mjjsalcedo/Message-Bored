@@ -8,6 +8,11 @@ angular.module('app')
           localStorage.setItem('username', user.data.username);
         }
       });
+    },
+    logoutUser: function(data) {
+        if(data !== null){
+          localStorage.removeItem('username');
+        }
     }
   };
 }]);

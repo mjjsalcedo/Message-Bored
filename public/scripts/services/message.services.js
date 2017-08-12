@@ -6,6 +6,10 @@ angular.module('app')
       .then(function(messages) {
          return messages.data;
       });
+    },
+    addMessage: function(data) {
+      console.log('server', data);
+      return $http.post('http://localhost:9000/api/messages', data);
     }
   };
 }]);

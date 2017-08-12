@@ -9,14 +9,16 @@ let Topics = db.topics;
 let Messages = db.messages;
 
 router.get('/', (req,res)=>{
-  Messages.findAll({include: [{model: Topics, include :[{model: Users, attributes:['name']}],attributes:['name', 'createdAt']}]})
+  Messages.findAll({include: [{model: Users, attributes: ['name']},{model: Topics, attributes: ['id', 'name']}]})
   .then( messages => {
     let allMessages = messages.map(message => {
       return {
         id: message.id,
         user: message.user,
         topic: message.topic,
-        message: message.createdAt
+        createdAt: message.createdAt,
+        body: message.body,
+        author: message.author_id
       };
     });
     res.json(allMessages);
@@ -39,11 +41,17 @@ router.get('/:id', (req,res)=>{
 });
 
 router.post('/', (req,res)=>{
-  Messages.create({
-    name: req.body.name,
-  }).then((newUser)=>{
+  let submittedInfo = req.body;
+  Users.findOne({where: {name: submittedInfo.created_by}})
+  .then((foundUser)=> {
+    Messages.create({
+      body: submittedInfo.body,
+      topic_id: submittedInfo.topic_id,
+      author_id: foundUser.id
+    }).then((newUser)=>{
       res.json(newUser);
     });
+  });
 });
 
 module.exports = router;

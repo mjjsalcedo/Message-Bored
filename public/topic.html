@@ -1,5 +1,4 @@
  <h1>{{ topic.name }}</h1>
-
 <ul>
   <li ng-repeat="message in messages | orderBy: '-createdAt'">
   <p> {{ message.createdAt }}</p>
@@ -7,3 +6,8 @@
   <p> {{ message.body }}</p>
   </li>
 </ul>
+
+<div>
+  <input type="text" ng-model="newMessage.body"><br>
+<button ng-click="addMessage()">Add New Message</button>
+</div>
